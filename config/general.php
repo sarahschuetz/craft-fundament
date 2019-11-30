@@ -9,40 +9,56 @@
  */
 
 return [
-    // Global settings
     '*' => [
-        // Default Week Start Day (0 = Sunday, 1 = Monday...)
+        'defaultCpLanguage' => 'en',
+        'defaultSearchTermOptions' => [
+            'attribute' => null,
+            'exact' => false,
+            'exclude' => false,
+            'subLeft' => true,
+            'subRight' => true,
+        ],
         'defaultWeekStartDay' => 1,
-
-        // Whether generated URLs should omit "index.php"
+        'enableTemplateCaching' => false,
+        'headlessMode' => true,
+        'limitAutoSlugsToAscii' => true,
+        'maxUploadFileSize' => 67108864,
         'omitScriptNameInUrls' => true,
-
-        // Control Panel trigger word
-        'cpTrigger' => 'admin',
-
-        // The secure key Craft will use for hashing and encrypting data
+        'postCpLoginRedirect' => 'entries',
         'securityKey' => getenv('SECURITY_KEY'),
-
-        // Whether to save the project config out to config/project.yaml
-        // (see https://docs.craftcms.com/v3/project-config.html)
+        'siteName' => 'Fundament',
+        'timezone' => 'Europe/Vienna',
+        'transformGifs' => false,
         'useProjectConfigFile' => false,
+        'userSessionDuration' => 'P1W',
+        'rememberedUserSessionDuration' => 'P4W',
     ],
 
-    // Dev environment settings
-    'dev' => [
-        // Dev Mode (see https://craftcms.com/guides/what-dev-mode-does)
-        'devMode' => true,
-    ],
-
-    // Staging environment settings
-    'staging' => [
-        // Set this to `false` to prevent administrative changes from being made on staging
-        'allowAdminChanges' => true,
-    ],
-
-    // Production environment settings
     'production' => [
-        // Set this to `false` to prevent administrative changes from being made on production
+        'allowUpdates' => false,
+        'backupOnUpdate' => false,
+        'devMode' => false,
+        'enableTemplateCaching' => false,
+        'isSystemLive' => true,
         'allowAdminChanges' => true,
+    ],
+
+    'staging' => [
+        'allowUpdates' => false,
+        'backupOnUpdate' => false,
+        'devMode' => true,
+        'enableTemplateCaching' => false,
+        'isSystemLive' => false,
+        'allowAdminChanges' => true,
+    ],
+
+    'dev' => [
+        'allowUpdates' => true,
+        'backupOnUpdate' => false,
+        'devMode' => true,
+        'enableTemplateCaching' => false,
+        'isSystemLive' => false,
+        'allowAdminChanges' => true,
+        'testToEmailAddress' => 'sarah@fredmansky.at',
     ],
 ];
